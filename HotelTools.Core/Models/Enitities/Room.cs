@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HotelTools.Core.Models.Enitities
 {
     [Table("Rooms", Schema = "dbo")]
-    public class Rooms : EntityBase
+    public class Room : EntityBase
     {
         private int _roomNumber;
         private int? _roomSurface;
