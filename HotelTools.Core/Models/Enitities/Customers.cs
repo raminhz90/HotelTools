@@ -21,41 +21,41 @@ namespace HotelTools.Core.Models.Enitities
         [StringLength(50)]
         [Required]
         [BackingField(nameof(_firstName))]
-        public string FirstName { get => _firstName; set => _firstName = value; }
+        public string FirstName { get => _firstName; set => SetProperty(ref _firstName, value, true); }
 
         [StringLength(50)]
         [Required]
         [BackingField(nameof(_lastName))]
-        public string LastName { get => _lastName; set => _lastName = value; }
+        public string LastName { get => _lastName; set => SetProperty(ref _lastName, value, true); }
 
         [StringLength(50)]
         [BackingField(nameof(_email))]
-        public string Email { get => _email; set => _email = value; }
+        public string Email { get => _email; set => SetProperty(ref _email, value, true); }
 
         [StringLength(50)]
         [Required]
         [BackingField(nameof(_nationalID))]
-        public string NationalID { get => _nationalID; set => _nationalID = value; }
+        public string NationalID { get => _nationalID; set => SetProperty(ref _nationalID, value, true); }
 
         [StringLength(50)]
         [Required]
         [BackingField(nameof(_phoneNumber))]
-        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
+        public string PhoneNumber { get => _phoneNumber; set => SetProperty(ref _phoneNumber, value, true); }
 
         [StringLength(50)]
         [BackingField(nameof(_address))]
-        public string Address { get => _address; set => _address = value; }
+        public string Address { get => _address; set => SetProperty(ref _address, value, true); }
 
         [StringLength(50)]
         [BackingField(nameof(_comment))]
-        public string Comment { get => _comment; set => _comment = value; }
+        public string Comment { get => _comment; set => SetProperty(ref _comment, value, true); }
 
         [StringLength(50)]
         [BackingField(nameof(_birthday))]
-        public DateTime Birthday { get => _birthday; set => _birthday = value; }
+        public DateTime Birthday { get => _birthday; set => SetProperty(ref _birthday, value, true); }
 
         [StringLength(50)]
         [BackingField(nameof(_lastName))]
-        public DateTime LastVisit { get => _lastVisit; set => _lastVisit = value; }
+        public DateTime LastVisit { get => _lastVisit; set => SetProperty(ref _lastVisit, value, true); }
     }
 }
