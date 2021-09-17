@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HotelTools.Core.Models.Enitities
 {
     [Table("Customers", Schema = "dbo")]
-    internal class Customers : EntityBase
+    public class Customers : EntityBase
     {
         private string _firstName;
         private string _lastName;
