@@ -1,4 +1,6 @@
-﻿using HotelTools.Interfaces;
+﻿using HandyControl.Themes;
+using HandyControl.Tools;
+using HotelTools.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +21,24 @@ namespace HotelTools
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window , IMainWindow
+    public partial class MainWindow : HandyControl.Controls.Window, IMainWindow
     {
         public MainWindow(Core.Interfaces.IDataBaseService dataBaseService)
         {
+            ConfigHelper.Instance.SetWindowDefaultStyle();
+
             InitializeComponent();
+            ThemeManager.Current.UsingSystemTheme = true;
+
         }
+
+        
 
         public Frame GetMainFrame()
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

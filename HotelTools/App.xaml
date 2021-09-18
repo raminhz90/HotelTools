@@ -11,6 +11,9 @@
                 <hc:ThemeResources />
                 <hc:Theme />
             </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
+        
     </Application.Resources>
+    
 </Application>
