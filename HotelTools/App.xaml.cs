@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+using HotelTools.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Windows;
 
 namespace HotelTools
@@ -13,5 +12,20 @@ namespace HotelTools
     /// </summary>
     public partial class App : Application
     {
+        private IHost _host;
+
+        private async void OnStartup(object sender, StartupEventArgs e)
+        {
+            _host = Host.CreateDefaultBuilder(e.Args)
+                        .ConfigureServices(ConfigureServices)
+                        .Build();
+
+            await _host.StartAsync();
+        }
+
+        private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
+        {
+            services.AddHostedService<ApplicationHostService>();
+        }
     }
 }
