@@ -2,7 +2,6 @@
 using HotelTools.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Windows;
 
 namespace HotelTools
@@ -26,6 +25,10 @@ namespace HotelTools
         private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
         {
             services.AddHostedService<ApplicationHostService>();
+
+            services.AddSingleton<Core.Interfaces.IDataBaseService, Core.Services.DataBaseService>();
+
+            services.AddTransient<MainWindow>();
         }
     }
 }

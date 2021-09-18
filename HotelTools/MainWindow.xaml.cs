@@ -20,9 +20,10 @@ namespace HotelTools
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(Core.Interfaces.IDataBaseService dataBaseService)
         {
             InitializeComponent();
+            MessageBox.Show(dataBaseService.GetRoomByID(1).Comments);
         }
     }
 }
