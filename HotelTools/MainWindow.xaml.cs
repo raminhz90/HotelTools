@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelTools.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,12 +19,16 @@ namespace HotelTools
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window , IMainWindow
     {
         public MainWindow(Core.Interfaces.IDataBaseService dataBaseService)
         {
             InitializeComponent();
-            MessageBox.Show(dataBaseService.GetRoomByID(1).Comments);
+        }
+
+        public Frame GetMainFrame()
+        {
+            throw new NotImplementedException();
         }
     }
 }

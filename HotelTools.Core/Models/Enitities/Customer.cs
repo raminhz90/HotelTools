@@ -15,6 +15,7 @@ namespace HotelTools.Core.Models.Enitities
         private string _phoneNumber;
         private string _address;
         private string _comment;
+        private string _sex;
         private DateTime _birthday;
         private DateTime _lastVisit;
 
@@ -55,7 +56,11 @@ namespace HotelTools.Core.Models.Enitities
         public DateTime Birthday { get => _birthday; set => SetProperty(ref _birthday, value, true); }
 
         [StringLength(50)]
-        [BackingField(nameof(_lastName))]
+        [BackingField(nameof(_lastVisit))]
         public DateTime LastVisit { get => _lastVisit; set => SetProperty(ref _lastVisit, value, true); }
+
+        [StringLength(50)]
+        [BackingField(nameof(_sex))]
+        public string Sex { get => _sex; set => _sex = value; }
     }
 }

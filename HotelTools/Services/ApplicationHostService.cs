@@ -1,4 +1,5 @@
 ﻿using HotelTools.Core.Interfaces;
+using HotelTools.Interfaces;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace HotelTools.Services
         {
             
             _isInitialized = true;
-            MainWindow mainWindow= _serviceProvider.GetService(typeof(MainWindow)) as MainWindow;
+            IMainWindow mainWindow= _serviceProvider.GetService(typeof(IMainWindow)) as IMainWindow;
             mainWindow.Show();
             return Task.CompletedTask;
         }

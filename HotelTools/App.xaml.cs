@@ -1,4 +1,5 @@
 ﻿
+using HotelTools.Interfaces;
 using HotelTools.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +29,7 @@ namespace HotelTools
 
             services.AddSingleton<Core.Interfaces.IDataBaseService, Core.Services.DataBaseService>();
 
-            services.AddTransient<MainWindow>();
+            services.AddTransient<IMainWindow, MainWindow>();
         }
     }
 }
