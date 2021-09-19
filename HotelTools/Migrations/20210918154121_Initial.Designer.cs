@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelTools.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210918100344_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20210918154121_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,10 @@ namespace HotelTools.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Sex")
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 

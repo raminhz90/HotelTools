@@ -32,13 +32,10 @@ namespace HotelTools
 
         }
 
-        
 
-        public Frame GetMainFrame()
-        {
-            throw new NotImplementedException();
-        }
 
-        
+        public Frame GetMainFrame() => _frame;
+
+
     }
 }

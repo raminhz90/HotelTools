@@ -30,10 +30,11 @@
             <MenuItem Header="File" />
             <MenuItem Header="File" />
         </Menu>
-        
-        
+        <Frame Grid.Row="1" x:Name="_frame"/>
 
-            <StatusBar
+
+
+        <StatusBar
             Grid.Row="2"
             Height="25"
             ClipToBounds="True" />

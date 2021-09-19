@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HotelTools.Migrations
 {
-    public partial class InitialCreation : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,7 @@ namespace HotelTools.Migrations
                     Comment = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     Birthday = table.Column<DateTime>(type: "TEXT", maxLength: 50, nullable: false),
                     LastVisit = table.Column<DateTime>(type: "TEXT", maxLength: 50, nullable: false),
+                    Sex = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     Timestamp = table.Column<byte[]>(type: "BLOB", rowVersion: true, nullable: true)
                 },
                 constraints: table =>

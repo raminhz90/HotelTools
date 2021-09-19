@@ -1,5 +1,6 @@
 ﻿using HotelTools.Core.Interfaces;
 using HotelTools.Interfaces;
+using HotelTools.Interfaces.Services;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,14 @@ namespace HotelTools.Services
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly IDataBaseService _dataBaseService;
+        private readonly INavigationService _navigationService;
         private bool _isInitialized;
 
-        public ApplicationHostService(IServiceProvider serviceProvider,Core.Interfaces.IDataBaseService dataBaseService)
+        public ApplicationHostService(IServiceProvider serviceProvider, IDataBaseService dataBaseService, INavigationService navigationService)
         {
             _serviceProvider = serviceProvider;
             _dataBaseService = dataBaseService;
+            _navigationService = navigationService;
         }
 
 
@@ -28,7 +31,9 @@ namespace HotelTools.Services
             
             _isInitialized = true;
             IMainWindow mainWindow= _serviceProvider.GetService(typeof(IMainWindow)) as IMainWindow;
+            _navigationService.Initialize(mainWindow.GetMainFrame());
             mainWindow.Show();
+            _navigationService.NavigateTo(typeof(ViewModels.CustomerListViewModel).FullName);
             return Task.CompletedTask;
         }
 

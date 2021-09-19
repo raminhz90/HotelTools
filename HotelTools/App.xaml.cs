@@ -1,6 +1,9 @@
 ﻿
 using HotelTools.Interfaces;
+using HotelTools.Interfaces.Services;
 using HotelTools.Services;
+using HotelTools.ViewModels;
+using HotelTools.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
@@ -28,8 +31,14 @@ namespace HotelTools
             services.AddHostedService<ApplicationHostService>();
 
             services.AddSingleton<Core.Interfaces.IDataBaseService, Core.Services.DataBaseService>();
+            services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<Core.Interfaces.IDataBaseService, Core.Services.DataBaseService>();
+            services.AddSingleton<IPageService, PageService>();
 
             services.AddTransient<IMainWindow, MainWindow>();
+
+            services.AddTransient<CustomerListViewModel>();
+            services.AddTransient<CustomerListView>();
         }
     }
 }
