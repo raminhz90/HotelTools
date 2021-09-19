@@ -18,5 +18,7 @@ namespace HotelTools.Core.Interfaces
         Room GetRoomByID(int id);
         Task SaveRoom(Room room);
         Task SaveRoom(IEnumerable<Room> room);
+
+        Task DeleteCustomer(Customer customer);
     }
 }

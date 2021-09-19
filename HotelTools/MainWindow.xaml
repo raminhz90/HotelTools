@@ -30,7 +30,7 @@
             <MenuItem Header="File" />
             <MenuItem Header="File" />
         </Menu>
-        <Frame Grid.Row="1" x:Name="_frame"/>
+        <Frame Grid.Row="1" x:Name="_frame" NavigationUIVisibility="Hidden"/>
 
 
 

@@ -17,6 +17,7 @@ namespace HotelTools.Services
         {
             _serviceProvider = serviceProvider;
             Configure<ViewModels.CustomerListViewModel, Views.CustomerListView>();
+            Configure<ViewModels.CustomerEditViewModel, Views.CustomerEditView>();
         }
 
         public Type GetPageType(string key)

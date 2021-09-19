@@ -114,5 +114,12 @@ namespace HotelTools.Core.Services
         public Customer GetCustomerByID(int id) => (from c in _db.Customer where c.Id == id select c).FirstOrDefault();
         public Room GetRoomByID(int id) => (from c in _db.Room where c.Id == id select c).FirstOrDefault();
         public Invoice GetInvoiceByID(int id) => (from i in _db.Invoices where i.Id == id select i).FirstOrDefault();
+
+        public Task DeleteCustomer(Customer customer)
+        {
+            _db.Customer.Remove(customer);
+            _db.SaveChanges();
+            return Task.CompletedTask;
+        }
     }
 }

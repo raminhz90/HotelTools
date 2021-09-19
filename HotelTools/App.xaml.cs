@@ -34,11 +34,15 @@ namespace HotelTools
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<Core.Interfaces.IDataBaseService, Core.Services.DataBaseService>();
             services.AddSingleton<IPageService, PageService>();
+            services.AddSingleton<IDataStore, DataStore>();
 
             services.AddTransient<IMainWindow, MainWindow>();
 
             services.AddTransient<CustomerListViewModel>();
             services.AddTransient<CustomerListView>();
+
+            services.AddTransient<CustomerEditViewModel>();
+            services.AddTransient<CustomerEditView>();
         }
     }
 }
