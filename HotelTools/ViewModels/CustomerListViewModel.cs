@@ -1,4 +1,6 @@
-﻿using HandyControl.Tools.Command;
+﻿using HandyControl.Controls;
+using HandyControl.Data;
+using HandyControl.Tools.Command;
 using HotelTools.Core.Interfaces;
 using HotelTools.Core.Models.Enitities;
 using HotelTools.Interfaces.Services;
@@ -18,11 +20,41 @@ namespace HotelTools.ViewModels
         private ObservableCollection<Customer> _customerDatagrid = new ObservableCollection<Customer>();
         private ObservableCollection<Customer> _customers = new ObservableCollection<Customer>();
         private string _searchQuery = string.Empty;
-        private bool test = false;
         private Customer _selectedCustomer;
 
 
-        public RelayCommand StartAllAccounts => new RelayCommand(new Action<object>(StartAllAccountsCommand), new Func<object, bool>(getCanex));
+        public RelayCommand AddNewCustomerCommand => new RelayCommand(new Action<object>(AddNewCustomer));
+        public RelayCommand EditCustomerCommand => new RelayCommand(new Action<object>(EditCustomer), new Func<object, bool>(IsSelectionValid));
+        public RelayCommand DeleteCustomerCommand => new RelayCommand(new Action<object>(DeleteCustomer), new Func<object, bool>(IsSelectionValid));
+
+        private void DeleteCustomer(object obj)
+        {
+            System.Windows.MessageBoxResult result =MessageBox.Show(new MessageBoxInfo
+            {
+                Message=$"Are you Sure You Want to Delete This Customer {_selectedCustomer.FirstName} {_selectedCustomer.LastName}",
+                Button=System.Windows.MessageBoxButton.YesNo,
+                
+                
+            });
+            if (result.Equals(System.Windows.MessageBoxResult.Yes))
+            {
+                _dataBaseService.DeleteCustomer(_selectedCustomer);
+
+            }
+        }
+
+        private void EditCustomer(object obj)
+        {
+            _dataStore.setCustomer(SelectedCustomer);
+            _navigationService.NavigateTo(typeof(ViewModels.CustomerEditViewModel).FullName);
+        }
+
+        private void AddNewCustomer(object obj)
+        {
+            _dataStore.setCustomer(new Customer());
+            _navigationService.NavigateTo(typeof(CustomerEditViewModel).FullName);
+        }
+
         public ObservableCollection<Customer> CustomerDatagrid { get => _customerDatagrid; set => SetProperty(ref _customerDatagrid, value); }
         public ObservableCollection<Customer> Customers { get => _customers; set => _customers = value; }
         public string SearchQuery
@@ -39,23 +71,19 @@ namespace HotelTools.ViewModels
 
 
 
-        private bool getCanex(object g)
+        private bool IsSelectionValid(object g)
         {
-            if (SelectedCustomer != null)
+            if (SelectedCustomer != null && SelectedCustomer.Id !=0)
             {
                 return true;
 
             }
-            else return true;
+            else return false;
 
 
         }
 
-        private void StartAllAccountsCommand(object g)
-        {
-            _dataStore.setCustomer(SelectedCustomer);
-            _navigationService.NavigateTo(typeof(ViewModels.CustomerEditViewModel).FullName);
-        }
+        
 
         public CustomerListViewModel(IDataBaseService dataBaseService, INavigationService navigationService, IDataStore dataStore)
         {
@@ -67,7 +95,6 @@ namespace HotelTools.ViewModels
                 Customers.Add(customer);
             }
             _customerDatagrid = new ObservableCollection<Customer>(Customers);
-            //WeakReferenceMessenger.Default.Register<LoggedInUserChangedMessage>();
 
         }
 

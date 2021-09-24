@@ -121,5 +121,11 @@ namespace HotelTools.Core.Services
             _db.SaveChanges();
             return Task.CompletedTask;
         }
+        public Task DeleteRoom(Room room)
+        {
+            _db.Room.Remove(room);
+            _db.SaveChanges();
+            return Task.CompletedTask;
+        }
     }
 }

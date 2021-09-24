@@ -1,6 +1,7 @@
 ﻿using HandyControl.Themes;
 using HandyControl.Tools;
 using HotelTools.Interfaces;
+using HotelTools.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,13 @@ namespace HotelTools
     /// </summary>
     public partial class MainWindow : HandyControl.Controls.Window, IMainWindow
     {
-        public MainWindow(Core.Interfaces.IDataBaseService dataBaseService)
+        public MainWindow(Core.Interfaces.IDataBaseService dataBaseService, MainWindowViewModel viewModel)
         {
             ConfigHelper.Instance.SetWindowDefaultStyle();
 
             InitializeComponent();
             ThemeManager.Current.UsingSystemTheme = true;
+            DataContext = viewModel;
 
         }
 

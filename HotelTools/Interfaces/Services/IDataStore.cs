@@ -10,5 +10,8 @@ namespace HotelTools.Interfaces.Services
         Customer GetCustomer();
         void setCustomer(Customer customer);
 
+        Room GetRoom();
+        void setRoom(Room room);
+
     }
 }

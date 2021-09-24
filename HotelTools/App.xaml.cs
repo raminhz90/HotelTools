@@ -37,12 +37,24 @@ namespace HotelTools
             services.AddSingleton<IDataStore, DataStore>();
 
             services.AddTransient<IMainWindow, MainWindow>();
+            services.AddTransient<MainWindowViewModel>();
+
 
             services.AddTransient<CustomerListViewModel>();
             services.AddTransient<CustomerListView>();
 
             services.AddTransient<CustomerEditViewModel>();
             services.AddTransient<CustomerEditView>();
+
+
+            services.AddTransient<HomeViewModel>();
+            services.AddTransient<HomeView>();
+
+            services.AddTransient<RoomListViewModel>();
+            services.AddTransient<RoomListView>();
+
+            services.AddTransient<RoomEditViewModel>();
+            services.AddTransient<RoomEditView>();
         }
     }
 }

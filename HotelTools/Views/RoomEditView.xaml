@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="HotelTools.Views.CustomerEditView"
+    x:Class="HotelTools.Views.RoomEditView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,20 +8,27 @@
     xmlns:local="clr-namespace:HotelTools.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:HotelTools.ViewModels"
-    Title="{Binding Customer.LastName}"
-    d:DataContext="{d:DesignInstance Type=viewmodels:CustomerEditViewModel}"
+    x:Name="Maingrid"
+    Title="RoomEditView"
+    d:DataContext="{d:DesignInstance Type=viewmodels:RoomEditViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
     <Page.Resources>
+
+
         <Style BasedOn="{StaticResource TextBlockDefaultBold}" TargetType="TextBlock">
             <Setter Property="Margin" Value="10,2,5,2" />
         </Style>
-        <Style BasedOn="{StaticResource TextBoxExtend}" TargetType="TextBox">
+        <!--<Style   TargetType="hc:TextBox" BasedOn="{StaticResource TextBoxCS}" >
+            <Setter Property="Template" Value="{DynamicResource TextBoxPlusLeftCT}"/>
             <Setter Property="Background" Value="{DynamicResource MainContentBackgroundBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource SecondaryTextBrush}" />
             <Setter Property="Margin" Value="0,5,0,5" />
-        </Style>
+            <Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}"/>
+        </Style>-->
+
     </Page.Resources>
 
     <Grid Background="{DynamicResource MainContentBackgroundBrush}" Grid.IsSharedSizeScope="True">
@@ -30,7 +37,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Height="auto" Command="{Binding SaveCustomerCommand}">
+            <Button Height="auto" Command="{Binding SaveRoomCommand}">
+
                 <Button.Content>
                     <StackPanel Orientation="Vertical">
                         <fa:FontAwesome
@@ -45,7 +53,7 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Height="auto" Command="{Binding DeleteCustomerComand}">
+            <Button Height="auto" Command="{Binding DeleteRoomComand}">
                 <Button.Content>
                     <StackPanel Orientation="Vertical">
                         <fa:FontAwesome FontSize="20" Icon="Trash" />
@@ -53,7 +61,7 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Height="auto" Command="{Binding NewCustomerCommand}">
+            <Button Height="auto" Command="{Binding NewRoomCommand}">
                 <Button.Content>
                     <StackPanel Orientation="Vertical">
                         <fa:FontAwesome FontSize="20" Icon="FileText" />
@@ -75,7 +83,6 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="{DynamicResource MainContentBackgroundBrush}">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" SharedSizeGroup="A" />
@@ -92,98 +99,82 @@
                 <ColumnDefinition Width="auto" SharedSizeGroup="Ca" />
                 <ColumnDefinition Width="*" SharedSizeGroup="Cb" />
             </Grid.ColumnDefinitions>
-            <!--<hc:RunningBorder BorderBrush="Red" BorderThickness="3" Grid.Column="0" Grid.RowSpan="7"/>-->
             <TextBlock
                 Grid.Row="0"
                 Grid.Column="0"
                 HorizontalAlignment="Stretch"
-                Text="Name :" />
+                Text="Room Number :" />
             <TextBlock
-                Grid.Row="0"
+                Grid.Row="2"
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
-                Text="Last Name :" />
+                Text="Building Complex :" />
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="0"
                 HorizontalAlignment="Stretch"
-                Text="Email :" />
+                Text="Beds :" />
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="0"
                 HorizontalAlignment="Stretch"
-                Text="National ID :" />
+                Text="Bedrooms :" />
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
-                Text="Phone Number:" />
+                Text="Room Surface:" />
             <TextBlock
                 Grid.Row="3"
                 Grid.Column="0"
                 HorizontalAlignment="Stretch"
-                Text="Address :" />
+                Text="Price :" />
             <TextBlock
                 Grid.Row="3"
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
                 Text="Comment :" />
             <TextBlock
-                Grid.Row="2"
+                Grid.Row="0"
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
-                Text="Sex :" />
-            <TextBlock
-                Grid.Row="4"
-                Grid.Column="2"
-                HorizontalAlignment="Stretch"
-                Text="Last Visit :" />
-            <TextBlock
-                Grid.Row="4"
-                Grid.Column="0"
-                HorizontalAlignment="Stretch"
-                Text="Birthday :" />
+                Text="Floor :" />
+
             <hc:TextBox
+                hc:VisualElement.Text="hhh"
                 Grid.Row="0"
                 Grid.Column="1"
-                Text="{Binding Customer.FirstName, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.RoomNumber, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
-                Grid.Row="0"
+                Grid.Row="2"
                 Grid.Column="3"
-                Text="{Binding Customer.LastName, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.ComplexNumber, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding Customer.Email, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.Beds, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
                 Grid.Row="2"
                 Grid.Column="1"
-                Text="{Binding Customer.NationalID, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.Bedrooms, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
                 Grid.Row="1"
                 Grid.Column="3"
-                Text="{Binding Customer.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.RoomSurface, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
                 Grid.Row="3"
                 Grid.Column="1"
-                Text="{Binding Customer.Address, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.RoomPrice, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
                 Grid.Row="3"
                 Grid.Column="3"
-                Text="{Binding Customer.Comment, UpdateSourceTrigger=PropertyChanged}" />
+                Text="{Binding Room.Comments, UpdateSourceTrigger=PropertyChanged}" />
             <hc:TextBox
-                Grid.Row="2"
+                Grid.Row="0"
                 Grid.Column="3"
-                Text="{Binding Customer.Sex, UpdateSourceTrigger=PropertyChanged}" />
-            <hc:DatePicker
-                Grid.Row="4"
-                Grid.Column="3"
-                IsHitTestVisible="False"
-                Text="{Binding Customer.LastVisit}" />
-            <hc:DatePicker
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="{Binding Customer.Birthday}" />
+                hc:InfoElement.Necessary="True"
+                Text="{Binding Room.Floor, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" />
+
 
 
         </Grid>

@@ -20,5 +20,6 @@ namespace HotelTools.Core.Interfaces
         Task SaveRoom(IEnumerable<Room> room);
 
         Task DeleteCustomer(Customer customer);
+        Task DeleteRoom(Room room);
     }
 }

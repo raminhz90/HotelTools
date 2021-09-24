@@ -32,7 +32,12 @@ namespace HotelTools.ViewModels
             return true;
         }
 
-        public RelayCommand NewCustomerCommand => new RelayCommand(new Action<object>(DeleteCustomer));
+        public RelayCommand NewCustomerCommand => new RelayCommand(new Action<object>(NewCustomer));
+
+        private void NewCustomer(object obj)
+        {
+            Customer=new Customer();
+        }
 
         private void DeleteCustomer(object obj)
         {

@@ -34,7 +34,7 @@ namespace HotelTools.Services
             IMainWindow mainWindow= _serviceProvider.GetService(typeof(IMainWindow)) as IMainWindow;
             _navigationService.Initialize(mainWindow.GetMainFrame());
             mainWindow.Show();
-            _navigationService.NavigateTo(typeof(ViewModels.CustomerListViewModel).FullName);
+            _navigationService.NavigateTo(typeof(ViewModels.HomeViewModel).FullName);
             return Task.CompletedTask;
         }
 
